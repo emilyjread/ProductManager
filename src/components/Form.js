@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { Link } from '@reach/router';
 import axios from 'axios'
 
 
@@ -19,19 +20,16 @@ const handleSubmit=e=>{
         .catch(err=>console.log(err))    
 }
 
-
-
-
     return(
         <form onSubmit={handleSubmit}>
             <label> Title: </label>
             <input type="text" onChange={(e)=>setName(e.target.value)}></input>
 
             <label> Price: </label>
-            <input onChange={(e)=>setPrice(e.target.value)} type= "number"></input>
+            <input onChange={(e)=>setPrice(e.target.value)} type= "number" step=".01"></input>
 
             <label> Description: </label>
-            <textarea onChange={(e)=>setDesc(e.target.value)}></textarea>
+            <input onChange={(e)=>setDesc(e.target.value)}></input>
 
             <input type="submit"></input>
         </form>
