@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Link } from '@reach/router';
+import DeleteButton from '../components/DeleteButton'
 const Detail=(props)=>{
     
     const [product, setProduct] = useState({});
@@ -25,7 +26,7 @@ const Detail=(props)=>{
             <p>Description: {product.desc}</p>
 
             <Link to={"/products/" + product._id + "/edit"}>Edit</Link>
-            <button onClick={(e)=>{deleteProduct(product._id)}}>Delete</button>
+            <DeleteButton productId={product._id} successCallback={()=>removeFromDom(product._id)}/>
         </div>
     )
 } 

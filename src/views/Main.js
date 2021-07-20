@@ -17,15 +17,21 @@ useEffect(()=>{
         .then(res=>{
             setProducts(res.data)
             setLoaded(true)
-            console.log("requesting products from API", res.data)
         })
         .catch(err=>console.log(err))
 }, [])
 
+const createProduct = product =>{
+    axios.post('http://localhost:8000/api/products', product)
+    .then (res=>{
+        setProducts([...products, res.data])
+    })
+}
+
  
     return(
         <div>
-            <Form/>
+            <Form onSubmitProp={createProduct} initialName="" initialPrice="" initialDesc=""/>
             {loaded && <ProductList products={products} removeFromDom={removeFromDom}/>}
         </div>
     )
