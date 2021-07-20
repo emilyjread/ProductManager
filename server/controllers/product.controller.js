@@ -18,7 +18,6 @@ module.exports.createProduct = (req, res)=>{
 }
 
 module.exports.getAllProducts = (req, res)=>{
-    console.log("getting products")
     Product.find({})
     .then(products=>res.json(products))
     .catch(err=>res.json(err))
